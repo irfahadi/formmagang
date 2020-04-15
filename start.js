@@ -6,9 +6,9 @@ var mysql = require('mysql')
 
 const app = express();
 
-app.use(express.static('public'));
-app.use('/img',express.static(__dirname+'public/img'));
-
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+app.use(express.static(path.join(__dirname,"public")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -73,6 +73,4 @@ app.post("/ajax/email", function(request,response){
 });
 
 
-var server = app.listen(8080, function(){
-	var port = server.address().port;
-});
+app.listen(8080, () => console.log("listening on port 8080"));
