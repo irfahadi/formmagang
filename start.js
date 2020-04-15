@@ -14,28 +14,28 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'magang'
-})
+// var connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'magang'
+// })
 
-connection.connect(function(err){
-	if (err) throw err;
+// connection.connect(function(err){
+// 	if (err) throw err;
 
-	console.log('connect');	
-})
+// 	console.log('connect');	
+// })
 
 
 app.post("/ajax/email", function(request,response){
 	
-	var sql = "insert into aktivitas values(null,'"+request.body.email+"','"+request.body.nim+"','"+request.body.nama+"','"+request.body.college+"','"+request.body.fakultas+"','"+request.body.datepicker+"','"+request.body.jam_masuk+"','"+request.body.jam_keluar+"','"+request.body.laporan+"')"
-	connection.query(sql, function (err) {
-  	if (err) throw err
+	// var sql = "insert into aktivitas values(null,'"+request.body.email+"','"+request.body.nim+"','"+request.body.nama+"','"+request.body.college+"','"+request.body.fakultas+"','"+request.body.datepicker+"','"+request.body.jam_masuk+"','"+request.body.jam_keluar+"','"+request.body.laporan+"')"
+	// connection.query(sql, function (err) {
+ //  	if (err) throw err
 
-	})
-	connection.end();
+	// })
+	// connection.end();
 
 	const transporter = nodemailer.createTransport({
 		host: "smtp.gmail.com",
