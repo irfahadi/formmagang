@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 var mysql = require('mysql')
 
 const app = express();
+const PORT = process.env.PORT
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
@@ -27,7 +28,7 @@ app.use(bodyParser.urlencoded());
 // 	console.log('connect');	
 // })
 
-
+app.get('/', (req, res) => res.render('/public/index.html'));
 app.post("/ajax/email", function(request,response){
 	
 	// var sql = "insert into aktivitas values(null,'"+request.body.email+"','"+request.body.nim+"','"+request.body.nama+"','"+request.body.college+"','"+request.body.fakultas+"','"+request.body.datepicker+"','"+request.body.jam_masuk+"','"+request.body.jam_keluar+"','"+request.body.laporan+"')"
@@ -73,6 +74,4 @@ app.post("/ajax/email", function(request,response){
 });
 
 
-app.listen(3306, () => {
-  console.log(`Listening on http://localhost:3306/`);
-});
+app.listen(PORT, () => console.log(`app listening on port ${PORT}`))
