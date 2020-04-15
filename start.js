@@ -73,4 +73,6 @@ app.post("/ajax/email", function(request,response){
 });
 
 
-app.listen(8080, () => console.log("listening on port 8080"));
+app.listen(8080, () => {
+  console.log(`Listening on http://localhost:8080/`);
+});
